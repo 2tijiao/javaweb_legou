@@ -1,1 +1,4 @@
 # javaweb_legou
+src文件夹中包含所有完整代码及启动类
+resource文件夹中包含配置文件及mapper的xml文件
+项目所用依赖在pom文件中已全包含

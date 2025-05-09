@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lilma.legou.mapper.GoodsMapper">
+    <!--动态sql-->
+    <!--id="test"：这个查询操作的唯一标识符，可以在Java代码中通过这个id来调用这个查询。
+resultType="com.lilma.pojo.Goods"：指定了查询结果应该映射到的Java对象类型，这里是Goods类。-->
+    <select id="search" resultType="com.lilma.legou.pojo.Goods">
+        select * from goods
+        <!--条件判断，用于检查传递给查询的参数中name是否不为空。name like "%"#{name}"%"：
+        如果name不为空，这个条件会被包含在SQL查询中。
+        #{name}是MyBatis的参数占位符，MyBatis会将实际的参数值替换进去。
+        like用于模糊查询，"%"#{name}"%"表示查询name字段中包含参数值的记录。-->
+        <where>
+            <if test="name!=null">
+                goodsname like "%"#{goodsname}"%"
+            </if>
+        </where>
+    </select>
+</mapper>
